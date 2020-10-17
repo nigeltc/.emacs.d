@@ -1,0 +1,176 @@
+#+STARTIP: overview
+* init.el - add this code to run the .org init file
+Elpa is needed for undo-tree
+#+BEGIN_SRC emacs-lisp
+  ;; ;; Set up packages
+  ;; (setq package-archives
+  ;;       '(("melpa" . "http://melpa.org/packages/")
+  ;; 	("gnu" . "http://elpa.gnu.org/packages/")))
+  ;; (package-initialize)
+
+  ;; ;; Load and run ntc.org
+  ;; (org-babel-load-file
+  ;;  (expand-file-name "~/.emacs.d/ntc.org"))
+#+END_SRC
+* use-package, try - package management
+1. use-package - simplifies package loading
+3. try - try packages before you install them   
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(use-package try
+	     :ensure t)
+#+END_SRC
+* basic customizations
+#+BEGIN_SRC emacs-lisp
+;; turn off welcome screen
+(setq inhibit-startup-message t)
+
+;; turn off toolbar
+(tool-bar-mode -1)
+
+;; show column number
+(setq column-number-mode t)
+
+;; Replace with bufler
+;; list-buffers like dired
+;;(defalias 'list-buffers 'ibuffer-other-window)
+
+;; this speeds up Tramp mode
+(setq tramp-default-method "ssh")
+
+;; highlight current line
+(global-hl-line-mode t)  
+
+;; enable narrowing
+(put 'narrow-to-region 'disabled nil)
+
+#+END_SRC
+
+* ido-mode - interactive file and buffer matching
+#+BEGIN_SRC emacs-lisp
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+#+END_SRC
+
+* autocomplete
+#+BEGIN_SRC emacs-lisp
+  (use-package auto-complete
+    :ensure t
+    :init
+    (ac-config-default)
+    (global-auto-complete-mode t))
+#+END_SRC
+* ace-window - window navigation (C-x o)
+#+BEGIN_SRC emacs-lisp
+(use-package ace-window
+  :ensure t
+  :init
+  (global-set-key [remap other-window] 'ace-window))
+#+END_SRC
+* flycheck - syntax checking
+#+BEGIN_SRC 
+(use-package flycheck
+  :ensure t
+  :init 
+  (global-flycheck-mode t))
+#+END_SRC
+* yasnippet - template system
+#+BEGIN_SRC emacs-lisp
+(use-package yasnippet
+  :ensure t
+  :init
+  (yas-global-mode 1))
+#+END_SRC
+* elpy - python development environment
+#+BEGIN_SRC emacs-lisp
+  (use-package elpy
+    :ensure t
+    :config
+    (elpy-enable))
+#+END_SRC
+* lorem-ipsum
+#+BEGIN_SRC emacs-lisp
+(use-package lorem-ipsum
+  :ensure t
+  :init
+  (lorem-ipsum-use-default-bindings))
+#+END_SRC
+* undo-tree - treat undo history as a tree
+#+BEGIN_SRC emacs-lisp
+  (use-package undo-tree
+    :ensure t
+    :init
+    (global-undo-tree-mode))
+#+END_SRC
+* beacon - never lose your cursor
+#+BEGIN_SRC emacs-lisp
+  (use-package beacon
+    :ensure t
+    :config
+    (beacon-mode 1)
+    (setq beacon-color "#666"))
+#+END_SRC
+
+* hungry-delete - delete all whitespace
+#+BEGIN_SRC emacs-lisp
+  (use-package hungry-delete
+    :ensure t
+    :config
+    (global-hungry-delete-mode))
+
+#+END_SRC
+* expand-region - expand the region by semantic units
+#+BEGIN_SRC emacs-lisp
+(use-package expand-region
+  :ensure t
+  :config
+  (global-set-key (kbd "C-=") 'er/expand-region))
+#+END_SRC
+* iedit - edit multiple regions
+#+BEGIN_SRC emacs-list
+(use-package iedit
+  :ensure t)
+#+END_SRC
+* org-mode - stuff for org Mode
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c c") 'org-capture)
+
+  (setq org-capture-templates
+	'(("s" "Saved" entry (file "~/dev/saved.org") "* %?\n%i\n")))
+
+#+END_SRC
+* python-mode - python editing setup#+BEGIN_SRC emacs-lisp
+  (add-hook 'python-mode-hook
+	    (lambda ()
+	      (setq indent-tabs-mode nil)
+	      (setq tab-width 4)
+	      (setq py-indent-offset 4)))
+
+#+END_SRC
+* web-mode - web editing setup
+#+BEGIN_SRC emacs-lisp
+(use-package web-mode
+  :ensure t
+  :config 
+  (setq web-mode-markup-indent-offset 4)
+  (setq web-mode-css-indent-offset 4)
+  (setq web-mode-code-indent-offset 4)
+  (setq web-mode-enable-auto-expanding t))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
+#+END_SRC
+* extra configuration
+#+BEGIN_SRC emacs-lisp
+  (defun load-if-exists (f)
+    "Load F if it exists"
+    (if (file-readable-p f)
+	(load-file f)))
+
+  (load-if-exists "ntc-extra.og")
+
+#+END_SRC
