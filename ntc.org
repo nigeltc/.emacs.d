@@ -143,8 +143,9 @@ Elpa is needed for undo-tree
 	'(("s" "Saved" entry (file "~/dev/saved.org") "* %?\n%i\n")))
 
 #+END_SRC
-* python-mode - python editing setup#+BEGIN_SRC emacs-lisp
-  (add-hook 'python-mode-hook
+* python-mode - python editing setup
+#+BEGIN_SRC emacs-lisp
+  '(add-hook 'python-mode-hook
 	    (lambda ()
 	      (setq indent-tabs-mode nil)
 	      (setq tab-width 4)
