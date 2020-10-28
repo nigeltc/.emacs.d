@@ -8,5 +8,10 @@ This configuration has to work on
 
 github does a good job of rendering .org files - click on ntc.org to see
 
+## Notes
+
+* Added some c-mode indentation customization
+
 ## Sources
 A lot of this is taken from the excellent [Using Emacs](https://cestlaz.github.io/stories/emacs/) series by Mike Zamansky  
+
