@@ -5,6 +5,7 @@
 (package-initialize)
 
 ;; Load and run ntc.org
+(require 'org)
 (org-babel-load-file
  (expand-file-name "~/.emacs.d/ntc.org"))
 
