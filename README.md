@@ -11,6 +11,7 @@ github does a good job of rendering .org files - click on ntc.org to see
 ## Notes
 
 * Added some c-mode indentation customization
+* Fix Emacs 26.1 / TLS 1.3 issue
 
 ## Sources
 A lot of this is taken from the excellent [Using Emacs](https://cestlaz.github.io/stories/emacs/) series by Mike Zamansky  
