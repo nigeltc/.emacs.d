@@ -43,7 +43,7 @@ Elpa is needed for undo-tree
 
 ;; Replace with bufler
 ;; list-buffers like dired
-;;(defalias 'list-buffers 'ibuffer-other-window)
+(defalias 'list-buffers 'ibuffer-other-window)
 
 ;; this speeds up Tramp mode
 (setq tramp-default-method "ssh")
@@ -194,6 +194,16 @@ Elpa is needed for undo-tree
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
+#+END_SRC
+
+* emmet-mode - generate HTML from CSS-like snippets
+#+BEGIN_SRC emacs-lisp
+  (use-package emmet-mode
+    :ensure t
+    :init
+    (add-hook 'web-mode-hook 'emmet-mode)
+    (add-hook 'css-mode-hook 'emmet-mode)
+    (add-hook 'sqml-mode-hook 'emmet-mode))
 #+END_SRC
 * hydra - tie related commands into a hydra
 #+BEGIN_SRC emacs-lisp

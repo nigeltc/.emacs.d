@@ -1,5 +1,7 @@
 ;; Fix for TLS 1.3 / emacs 26.1 bug
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+(if (and (= emacs-major-version 26)
+	 (= emacs-minor-version 1))
+    (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 ;; Keep package-selected-packages local to this machine
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
