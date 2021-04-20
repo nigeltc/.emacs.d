@@ -217,6 +217,11 @@ Elpa is needed for undo-tree
        ("q" nil "quit"))
 
 #+END_SRC
+* treemacs - tree layout file explorer
+#+BEGIN_SRC emacs-lisp
+  (use-package treemacs
+    :ensure t)
+#+END_SRC
 * extra configuration
 #+BEGIN_SRC emacs-lisp
   (defun load-if-exists (f)

@@ -17,4 +17,5 @@ fonts/
 server/
 snippets/
 url/
+.cache/
 
