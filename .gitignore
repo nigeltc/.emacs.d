@@ -3,6 +3,7 @@
 custom.el
 ntc.el
 ntc-extra.org
+.lsp-session-v1
 
 ac-comphist.dat
 bookmarks

@@ -85,10 +85,10 @@ Elpa is needed for undo-tree
 #+END_SRC
 * ace-window - window navigation (C-x o)
 #+BEGIN_SRC emacs-lisp
-(use-package ace-window
-  :ensure t
-  :init
-  (global-set-key [remap other-window] 'ace-window))
+;;(use-package ace-window
+;;  :ensure t
+;;  :init
+;;  (global-set-key [remap other-window] 'ace-window))
 #+END_SRC
 * flycheck - syntax checking
 #+BEGIN_SRC 
@@ -107,19 +107,14 @@ Elpa is needed for undo-tree
   (use-package yasnippet-snippets
     :ensure t)
 #+END_SRC
-* elpy - python development environment
+* lsp-mode - LSP setup
 #+BEGIN_SRC emacs-lisp
-  (use-package elpy
-    :ensure t
+  (use-package lsp-mode
+    :commands (lsp lsp-deferred)
+    :init
+    (setq lsp-keymap-prefix "C-c l")
     :config
-    (elpy-enable))
-#+END_SRC
-* lorem-ipsum
-#+BEGIN_SRC emacs-lisp
-(use-package lorem-ipsum
-  :ensure t
-  :init
-  (lorem-ipsum-use-default-bindings))
+    (lsp-enable-which-key-integration t))
 #+END_SRC
 * undo-tree - treat undo history as a tree
 #+BEGIN_SRC emacs-lisp
@@ -130,19 +125,19 @@ Elpa is needed for undo-tree
 #+END_SRC
 * beacon - never lose your cursor
 #+BEGIN_SRC emacs-lisp
-  (use-package beacon
-    :ensure t
-    :config
-    (beacon-mode 1)
-    (setq beacon-color "#666"))
+  ;; (use-package beacon
+  ;;   :ensure t
+  ;;   :config
+  ;;   (beacon-mode 1)
+  ;;   (setq beacon-color "#666"))
 #+END_SRC
 
 * hungry-delete - delete all whitespace
 #+BEGIN_SRC emacs-lisp
-  (use-package hungry-delete
-    :ensure t
-    :config
-    (global-hungry-delete-mode))
+  ;; (use-package hungry-delete
+  ;;   :ensure t
+  ;;   :config
+  ;;   (global-hungry-delete-mode))
 
 #+END_SRC
 * expand-region - expand the region by semantic units
@@ -181,6 +176,19 @@ Elpa is needed for undo-tree
 	      (setq tab-width 4)
 	      (setq py-indent-offset 4)))
 
+#+END_SRC
+* cider - clojure editing setup
+#+BEGIN_SRC emacs-lisp
+  (use-package cider
+    :ensure t)
+
+  (use-package paredit
+    :ensure t)
+#+END_SRC
+* markdown-mode - markdown editing setup
+#+BEGIN_SRC emacs-lisp
+  (use-package markdown-mode
+       :ensure t)
 #+END_SRC
 * web-mode - web editing setup
 #+BEGIN_SRC emacs-lisp
