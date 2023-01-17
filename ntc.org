@@ -59,7 +59,9 @@ Elpa is needed for undo-tree
 * theme - set the current theme
 #+BEGIN_SRC emacs-lisp
   (use-package zenburn-theme
-    :ensure t)
+    :ensure t
+    :config
+    (load-theme 'zenburn t))
 #+END_SRC
 * ido-mode - interactive file and buffer matching
 #+BEGIN_SRC emacs-lisp
