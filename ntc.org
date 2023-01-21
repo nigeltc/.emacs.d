@@ -102,14 +102,30 @@ Elpa is needed for undo-tree
   (use-package yasnippet-snippets
     :ensure t)
 #+END_SRC
+* treemacs - tree layout file explorer
+#+BEGIN_SRC emacs-lisp
+  (use-package treemacs
+    :ensure t
+    :defer t
+    :config
+    (setq treemacs-no-png-images t
+	  treemacs-width 24)
+    :bind ("C-c t" . treemacs))
+#+END_SRC
 * lsp-mode - LSP setup
 #+BEGIN_SRC emacs-lisp
-  ;; (use-package lsp-mode
-  ;;   :commands (lsp lsp-deferred)
-  ;;   :init
-  ;;   (setq lsp-keymap-prefix "C-c l")
-  ;;   :config
-  ;;   (lsp-enable-which-key-integration t))
+  (use-package lsp-mode
+    :ensure t
+    :hook ((python-mode . lsp))
+    :commands (lsp lsp-deferred)
+    :init
+    (setq lsp-keymap-prefix "C-c l")
+    :config
+    (lsp-enable-which-key-integration t))
+
+  (use-package lsp-ui
+    :ensure t
+    :commands lsp-ui-mode)
 #+END_SRC
 * undo-tree - treat undo history as a tree
 #+BEGIN_SRC emacs-lisp
@@ -202,11 +218,6 @@ Elpa is needed for undo-tree
        ("l" text-scale-decrease "out")
        ("q" nil "quit"))
 
-#+END_SRC
-* treemacs - tree layout file explorer
-#+BEGIN_SRC emacs-lisp
-  (use-package treemacs
-    :ensure t)
 #+END_SRC
 * extra configuration
 #+BEGIN_SRC emacs-lisp
