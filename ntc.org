@@ -102,6 +102,7 @@ Elpa is needed for undo-tree
 
   (use-package yasnippet-snippets
     :ensure t)
+
 #+END_SRC
 * treemacs - tree layout file explorer
 #+BEGIN_SRC emacs-lisp
